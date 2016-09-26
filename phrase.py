@@ -11,7 +11,6 @@ def bash(arg):
     
 def main(phrase, line):
     for frame in range(14):
-        print phrase
         phrase = "".join([x for x in phrase if x.isalpha() or x == " "])
         
         for letter in phrase:
