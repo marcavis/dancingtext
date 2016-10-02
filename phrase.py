@@ -24,7 +24,7 @@ def main(phrase, line):
                         let + ("%02d" % frame) + ".png"
             bash(crop)
         inputFiles = " ".join(["bak-" + x + ("%02d" % frame) + ".png" for x in phrase.replace(" ","9")])
-        bash("convert +append -flatten " + inputFiles + \
+        bash("convert -background white +append -flatten " + inputFiles + \
         " line-" + ("%02d" % line) + "-output-" + ("%02d" % frame) + ".png")
    
         #
@@ -37,7 +37,8 @@ if __name__ == "__main__":
             main(x, lineNum)
             lineNum += 1
         for x in range(14):
-            bash ("convert -append -gravity center line*output-" + ("%02d" % x) + ".png final-output-" + ("%02d" % x) + ".png")
+            bash ("convert -append -background white -gravity center line*output-" + \
+             ("%02d" % x) + ".png final-output-" + ("%02d" % x) + ".png")
         bash("convert -delay 12 -resize 560x final-output-*.png phrase-tw.gif")
         bash("convert -delay 12 final-output-*.png phrase-big.gif")
         bash("rm line-*-output-*")
