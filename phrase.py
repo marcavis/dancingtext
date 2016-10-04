@@ -12,6 +12,7 @@ def bash(arg):
 def main(phrase, line):
     for frame in range(14):
         phrase = "".join([x for x in phrase if x.isalpha() or x == " "])
+        phrase = phrase.lower()
         
         for letter in phrase:
             let = letter
